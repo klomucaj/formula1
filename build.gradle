@@ -25,8 +25,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'pa.formula1'
-    mainClass = 'pa.formula1.HelloApplication'
+    mainModule = 'pa.formulaRacing'
+    mainClass = 'pa.formulaRacing.App'
 }
 
 javafx {
@@ -38,6 +38,8 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation 'org.openjfx:javafx-controls:17.0.6'
+    implementation 'org.openjfx:javafx-fxml:17.0.6'
 }
 
 test {
@@ -54,4 +56,15 @@ jlink {
 
 jlinkZip {
     group = 'distribution'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
 }
