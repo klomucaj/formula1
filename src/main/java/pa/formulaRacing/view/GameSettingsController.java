@@ -33,6 +33,9 @@ public class GameSettingsController implements PrincipleController {
     private Label labelBot;
 
     @FXML
+    private Button addBotId;
+
+    @FXML
     private Button removeBotId;
 
     @FXML
