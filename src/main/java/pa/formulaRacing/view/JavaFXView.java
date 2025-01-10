@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /**
  * Implementazione di una vista con JavaFX.
  */
@@ -25,21 +27,21 @@ public class JavaFXView extends Application implements View {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/F1.fxml"));
-        Parent root = loader.load();
-        primaryStage.setTitle("F1 - Pencil Racing");
-        primaryStage.setScene(new Scene(root));
-        JavaFXController controller = loader.getController();
-        controller.controllerSettings(this.controller);
-        primaryStage.show();
-    }
+    public void start(Stage primaryStage) {
+        try {
+            // Load the FXML file
+            Parent root = FXMLLoader.load(getClass().getResource("/start.fxml"));
 
-    @Override
-    public void init() throws Exception {
-        controller = new DefaultMasterController();
-        super.init();
+            // Set up the stage and scene
+            primaryStage.setTitle("Formula Racing Game");
+            primaryStage.setScene(new Scene(root, 800, 600));
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Failed to load the F1.fxml file. Ensure the file path is correct.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("An unexpected error occurred during application initialization.");
+        }
     }
-
 }

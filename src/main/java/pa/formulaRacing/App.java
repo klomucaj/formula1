@@ -1,29 +1,16 @@
 package pa.formulaRacing;
 
 import pa.formulaRacing.view.JavaFXView;
-import pa.formulaRacing.view.View;
-
-import java.io.IOException;
+import javafx.application.Application;
 
 public class App {
-
-    private final View view;
-
-    public App(View view) {
-        this.view = view;
+    public static void main(String[] args) {
+        try {
+            // Launch the JavaFX application
+            Application.launch(JavaFXView.class, args);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Failed to start the application.");
+        }
     }
-
-    private static App createApp(String[] args) {
-        return new App(new JavaFXView());
-        // return new App(new ConsoleView());
-    }
-
-    private void startApp() throws IOException {
-        view.open();
-    }
-
-    public static void main(String[] args) throws IOException {
-        createApp(args).startApp();
-    }
-
 }
